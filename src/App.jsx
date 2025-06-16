@@ -4,7 +4,7 @@ import Hero from './sections/Hero';
 
 export const App = () => {
   return (
-    <div className='container mx-auto max-w-7xl bg-amber-400'>
+    <div className='container mx-auto max-w-7xl'>
     <Navbar/>
     <Hero/>
     </div>
