@@ -8,6 +8,8 @@ Title: Tenhun Falling spaceman (FanArt)
 
 import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
+import { useMotionValue, useSpring } from 'motion/react';
+import { useFrame } from '@react-three/fiber';
 
 export function Astronaut(props) {
   const group = useRef()
@@ -19,6 +21,18 @@ export function Astronaut(props) {
         actions[animations[0].name]?.play();
     }
   },[actions,animations])
+
+  const yPosition=useMotionValue(5); //its like a state value for motion
+  const ySpring = useSpring(yPosition,{damping:30});
+
+  useEffect(()=>{
+    ySpring.set(-1);
+  },[ySpring]);
+
+  useFrame(()=>{
+    group.current.position.y=ySpring.get();
+  })
+
   return (
     <group ref={group} {...props} dispose={null}
     rotation={[-Math.PI / 2, -0.2, 2.2]} scale={props.scale || 0.3}
