@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import Card from "../Components/Card";
 import { Globe } from "../Components/Globe";
+import CopyEmailButton from "../Components/CopyEmailButton";
+import {FrameWorks} from "../Components/FrameWorks";
 
 const About = () => {
   const grid2Container = useRef();
@@ -84,9 +86,18 @@ const About = () => {
             </figure>
         </div>
         {/* grid4 */}
-        <div className="grid-special-color grid-4"></div>
+        <div className="grid-special-color grid-4">
+          <div className="flex flex-col items-center justify-center gap-4 size-full">
+          <p className="text-center headtext">Do you want to start a project together?</p>
+          <CopyEmailButton/>
+          </div>
+        </div>
         {/* grid5 */}
-        <div className="grid-default-color grid-5"></div>
+        <div className="grid-default-color grid-5">
+          <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 ">
+            <FrameWorks/>
+          </div>
+        </div>
       </div>
     </section>
   );
