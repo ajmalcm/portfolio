@@ -5,15 +5,15 @@ export function FrameWorks() {
     const skills=["html5","css3","javascript","tailwindcss","vitejs","react","redux","vue","next","git","github","mongo"]
 
   return (
-    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
+    <div className="relative flex h-[15rem] w-full flex-col items-center justify-center">
       <OrbitingCircles iconSize={40}>
       {skills.map((skill,index)=>(
-        <Icon key={index} src={`assets/logos/html5.svg`}/>
+        <Icon key={index} src={`assets/logos/${skill}.svg`}/>
       ))}
       </OrbitingCircles>
-      <OrbitingCircles iconSize={30} radius={100} reverse speed={2}>
-      {skills.map((skill,index)=>(
-        <Icon key={index} src={`assets/logos/html5.svg`}/>
+      <OrbitingCircles iconSize={25} radius={100} reverse speed={2}>
+      {skills.reverse().map((skill,index)=>(
+        <Icon key={index} src={`assets/logos/${skill}.svg`}/>
       ))}
       </OrbitingCircles>
     </div>
@@ -21,6 +21,6 @@ export function FrameWorks() {
 }
 
 const Icon=({src})=>{
-    <img src={src} className="duration-200 rounded-sm hover:scale-110"/>
+    return <img src={src} className="duration-200 rounded-sm hover:scale-110"/>
 }
 

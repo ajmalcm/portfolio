@@ -35,12 +35,12 @@ const About = () => {
             </p>
             <Card
               style={{ rotate: "75deg", top: "30%", left: "20%" }}
-              text="GRASP"
+              text="SMOOTH"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-30deg", top: "60%", left: "45%" }}
-              text="SOLID"
+              text="RESPONSIVE"
               containerRef={grid2Container}
             />
             <Card
@@ -55,22 +55,27 @@ const About = () => {
             />
             <Card
               style={{ rotate: "20deg", top: "10%", left: "38%" }}
-              text="SRP"
+              text="REST"
+              containerRef={grid2Container}
+            />
+            <Card
+              style={{ rotate: "35deg", top: "2%", right: "80%" }}
+              image="assets/logos/next.svg"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "30deg", top: "70%", left: "70%" }}
-              image="assets/logos/csharp-pink.png"
+              image="assets/logos/react.svg"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-45deg", top: "70%", left: "25%" }}
-              image="assets/logos/dotnet-pink.png"
+              image="assets/logos/vue.svg"
               containerRef={grid2Container}
             />
             <Card
               style={{ rotate: "-75deg", top: "10%", right: "20%" }}
-              image="assets/logos/blazor-pink.png"
+              image="assets/logos/redux.svg"
               containerRef={grid2Container}
             />
           </div>
@@ -94,6 +99,11 @@ const About = () => {
         </div>
         {/* grid5 */}
         <div className="grid-default-color grid-5">
+        <div className="z-10 w-[50%]">
+          <p className="headText">Tech Stack</p>
+          <p className="subtext">I specialize in a variety of languages,frmaeworks,and tools that allow me to build robust and scalable applications.</p>
+
+        </div>
           <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125 ">
             <FrameWorks/>
           </div>
