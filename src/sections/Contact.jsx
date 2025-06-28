@@ -1,21 +1,66 @@
-import { useState } from "react"
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import Alert from "../Components/Alert";
+import { Particles } from "../Components/Particles";
 
 const Contact = () => {
 
     const [formData,setFormData]=useState({name:"",email:"",message:""});
     const {name,email,message}=formData;
+    const [isLoading,setIsLoading]=useState(false);
+    const [showAlert,setAlert]=useState(false);
+    const [alertType,setAlertType]=useState("success");
+    const [alertMessage,setAlertMessage]=useState("");
 
     const onChangeHandler=(e)=>{
         setFormData({...formData,[e.target.name]:e.target.value});
     }
 
-    const handleSubmit=(e)=>{
+    const showAlertMessage=(type,message)=>{
+         setAlert(true);
+           setAlertType(type);
+           setAlertMessage(message);
+           setTimeout(()=>{
+           setAlert(false); 
+           },4000)
+    }
+
+    const handleSubmit=async(e)=>{
         e.preventDefault();
-        console.log(formData)
+       setIsLoading(true);
+       try{
+        
+           await emailjs.send("service_rwlzhaj","template_0rb8qad",{
+               from_name:name,
+               to_name:"Aju",
+               from_email:email,
+               to_email:"ajmalcm22@gmail.com",
+               message:message
+           },"chOHFkShWcVtoJPfv")
+           setIsLoading(false);
+           setFormData({name:"",email:"",message:""});
+          showAlertMessage("Success","You'r message have been sent")
+       }
+       catch(err)
+       {
+        setIsLoading(false);
+        console.log(err);
+        showAlertMessage("danger","Something went wrong")
+       }
     }
 
   return (
     <section className="relative flex items-center c-space section-spacing">
+     <Particles
+        className="absolute inset-0 -z-50"
+        quantity={100}
+        ease={80}
+        color={"#ffffff"}
+        refresh
+      />
+    {
+        showAlert && <Alert type={alertType} text={alertMessage}/>
+    }
         <div className="flex flex-col items-center justify-center max-w-md p-5 mx-auto border border-white/10 rounded-2xl bg-primary">
         <div className="flex flex-col items-start w-full gap-5 mb-10">
             <h2 className="text-heading">Lets's Talk</h2>
@@ -72,7 +117,7 @@ const Contact = () => {
                 required
             />
             </div>
-            <button className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation" type="submit">send</button>
+            <button className="w-full px-1 py-3 text-lg text-center rounded-md cursor-pointer bg-radial from-lavender to-royal hover-animation" type="submit">{!isLoading ? "Send":"Sending"}</button>
         </form>
 
         </div>
