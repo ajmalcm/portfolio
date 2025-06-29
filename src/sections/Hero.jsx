@@ -6,7 +6,7 @@ import { Float, OrbitControls } from '@react-three/drei'
 import { useMediaQuery } from 'react-responsive'
 import { easing } from 'maath'
 import { Suspense } from 'react'
-import Loader from '../Components/LOader'
+import Loader from '../Components/Loader'
 
 const Hero = () => {
 
